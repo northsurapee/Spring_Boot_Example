@@ -1,0 +1,21 @@
+server:
+    port: 8080
+
+spring:
+    datasource: # To connect with db in Docker container
+      url: jdbc:postgresql://localhost:5332/customer
+      username: admin
+      password: password
+    jpa: # To config JPA
+      hibernate:
+        ddl-auto: create-drop # drop everything in db when restart the program
+      properties:
+          hibernate:
+            dialect: org.hibernate.dialect.PostgreSQLDialect
+            format_sql: true
+      show-sql: true
+    main:
+      web-application-type: servlet
+
+# Main : Tomcat is the embedded web server of Spring Boot (Web Server is the software that manage request and response in the server)
+# We can disable the web server by fill "none" instead of "servlet"
